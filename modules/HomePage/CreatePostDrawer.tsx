@@ -1,14 +1,19 @@
 'use client';
 
+import { useState } from 'react';
+
 import { TbBrush } from 'react-icons/tb';
 
 import { Button } from '@/components/ui/button';
 import { Drawer, DrawerClose, DrawerContent, DrawerHeader, DrawerTitle, DrawerTrigger } from '@/components/ui/drawer';
+import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 
 import { createPost } from './actions';
 
 export default function CreatePostDrawer() {
+  const [tagsList, setTagsList] = useState<string[]>([]);
+  const [currentTag, setCurrentTag] = useState('');
   return (
     <Drawer>
       <DrawerTrigger asChild>
@@ -26,9 +31,33 @@ export default function CreatePostDrawer() {
           </DrawerHeader>
 
           <form
-            action={createPost}
+            action={e => createPost(e, tagsList)}
             className="px-4"
           >
+            <Input
+              name="tags"
+              className="my-4 max-w-sm"
+              onChange={e => setCurrentTag(e.target.value)}
+              placeholder="Add tags..."
+              value={currentTag}
+              onKeyDown={e => {
+                if (e.key === 'Enter') {
+                  e.preventDefault();
+                  setTagsList([...tagsList, currentTag]);
+                  setCurrentTag('');
+                }
+              }}
+            />
+            <div className="flex flex-row flex-wrap gap-2 mb-4">
+              {tagsList.map(tag => (
+                <span
+                  key={tag}
+                  className="bg-blue-50 text-blue-500 px-2 py-1 text-sm rounded-2xl"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
             <Textarea
               name="content"
               placeholder="Type your message here."
