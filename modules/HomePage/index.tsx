@@ -17,7 +17,7 @@ export default async function HomePage() {
 
   return (
     <>
-      <div className="flex flex-col items-center mt-12">
+      <div className="flex flex-col items-center mt-20">
         <Posts posts={posts} />
       </div>
       {user ? <CreatePostDrawer /> : <UnauthorizedDialog />}
