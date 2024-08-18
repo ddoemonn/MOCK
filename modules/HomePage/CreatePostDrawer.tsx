@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Drawer, DrawerClose, DrawerContent, DrawerHeader, DrawerTitle, DrawerTrigger } from '@/components/ui/drawer';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { usePostStore } from '@/store';
+import { usePostStore } from '@/store/postStore';
 
 import { createPost } from './actions';
 

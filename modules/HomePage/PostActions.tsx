@@ -1,7 +1,5 @@
 import { HeartIcon } from 'lucide-react';
-import { BiComment, BiHeart } from 'react-icons/bi';
-import { CgComment } from 'react-icons/cg';
-import { FaComment } from 'react-icons/fa';
+import { BiComment } from 'react-icons/bi';
 import { RxLoop } from 'react-icons/rx';
 
 import { Button } from '@/components/ui/button';
@@ -13,7 +11,7 @@ export default function PostActions() {
         variant="ghost"
         className="hover:bg-transparent"
       >
-        <BiComment className="w-3 h-3 font-bold hover:text-blue-600" />
+        <BiComment className="w-3  h-3 font-bold hover:text-blue-600" />
       </Button>
       <Button
         variant="ghost"

@@ -3,28 +3,16 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { PostgrestSingleResponse } from '@supabase/supabase-js';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 dayjs.extend(relativeTime);
 
 import { cn } from '@/lib/utils';
 import PostActions from '@/modules/HomePage/PostActions';
-import { usePostStore } from '@/store';
+import { usePostStore } from '@/store/postStore';
 
-import { useEffect } from 'react';
-
-interface PostsProps {
-  posts: PostgrestSingleResponse<Post[]>;
-}
-
-export default function Posts({ posts }: PostsProps) {
-  const setPosts = usePostStore(state => state.setPosts);
+export default function Posts() {
   const postsFromStore = usePostStore(state => state.posts);
-
-  useEffect(() => {
-    if (posts.data) setPosts(posts.data);
-  });
 
   return (
     <>
@@ -57,7 +45,7 @@ export default function Posts({ posts }: PostsProps) {
               <div className="font-light">{post.content}</div>
             </div>
           </div>
-          <div className={cn(`flex justify-end items-center w-full ${post.tags ? 'mt-6' : 'mt-0'}`)}>
+          <div className={cn(`flex justify-end items-center w-full ${post.tags.length > 0 ? 'mt-4' : 'mt-0'}`)}>
             {post.tags && (
               <div className="flex gap-2">
                 {post.tags.map(tag => (

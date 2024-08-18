@@ -1,5 +1,3 @@
-import { PostgrestSingleResponse } from '@supabase/supabase-js';
-
 import UnauthorizedDialog from '@/modules/HomePage/UnauthorizedDialog';
 import { createClient } from '@/utils/supabase/server';
 
@@ -14,13 +12,11 @@ export default async function HomePage() {
     data: { user },
   } = await supabase.auth.getUser();
 
-  const posts: PostgrestSingleResponse<Post[]> = await supabase.from('posts').select('*');
-
   return (
     <>
       <Tags />
       <div className="flex flex-col items-center mt-20  ">
-        <Posts posts={posts} />
+        <Posts />
       </div>
       {user ? <CreatePostDrawer /> : <UnauthorizedDialog />}
     </>
