@@ -53,3 +53,40 @@ export async function createPost(formData: FormData, tags: string[]): Promise<Po
 
   return data;
 }
+
+export async function createComment(formData: FormData, postId: number): Promise<ToggleComment[]> {
+  const supabase = createClient();
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  const comment = formData.get('comment') as string;
+
+  if (!comment) {
+    throw new Error('Content is required');
+  }
+
+  if (!user) {
+    throw new Error('User not authenticated');
+  }
+
+  const { data, error } = await supabase
+    .from('comments')
+    .insert({
+      postId,
+      comment,
+      userId: user.id,
+      avatarUrl: user.user_metadata.avatar_url,
+      userName: user.user_metadata.user_name,
+      name: user.user_metadata.full_name,
+    })
+    .select()
+    .returns<ToggleComment[]>();
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  return data;
+}

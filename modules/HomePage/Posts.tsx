@@ -10,16 +10,23 @@ dayjs.extend(relativeTime);
 import { cn } from '@/lib/utils';
 import PostActions from '@/modules/HomePage/PostActions';
 import { usePostStore } from '@/store/postStore';
+import { useToggleCommentStore } from '@/store/toggleCommentStore';
 
 export default function Posts() {
   const postsFromStore = usePostStore(state => state.posts);
+  const setToggle = useToggleCommentStore(state => state.setToggle);
+  const toggle = useToggleCommentStore(state => state.toggle);
 
   return (
     <>
       {postsFromStore.map(post => (
         <div
+          onClick={() => setToggle({ postId: post.id, isToggle: true })}
           key={post.id}
-          className="flex flex-col items-start w-1/2 p-2 pl-4 mb-2 border-l-4  shadow-lg rounded-sm border-black"
+          className={cn(
+            'flex flex-col items-start w-[45%] mr-20 p-4 pl-4 mb-2 border-l-4  shadow-md hover:shadow-lg cursor-pointer  rounded-sm',
+            `${toggle.postId === post.id ? 'border-blue-500' : 'border-black'}`
+          )}
         >
           <div className="flex gap-4 w-full">
             <Link href={`/profile/${post.userName}`}>

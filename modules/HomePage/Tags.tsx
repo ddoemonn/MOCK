@@ -14,7 +14,7 @@ export default function Tags() {
         {tags.length > 0 && (
           <>
             <TableHeader>
-              <h1 className="text-2xl my-3 font-semibold">Popular Tags</h1>
+              <h1 className="text-xl mt-0 mb-3 font-semibold">Popular Tags</h1>
               <TableRow>
                 <TableHead>Tag</TableHead>
                 <TableHead className="text-right">Mentioned</TableHead>

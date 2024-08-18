@@ -42,7 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={roboto.className}
     >
       <body className="bg-background text-foreground font-light">
-        <nav className="w-full text-md  flex py-4 px-8 fixed top-0 bg-white">
+        <nav className="w-full text-md  flex py-4 px-8 fixed top-0 bg-white z-50 ">
           <Link
             href="/"
             className={`flex items-center gap-1 flex-1 text-3xl ${exo.className} `}
