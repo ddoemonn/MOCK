@@ -19,7 +19,7 @@ export default function Posts() {
       {postsFromStore.map(post => (
         <div
           key={post.id}
-          className="flex flex-col items-start w-1/2  p-2 mb-2 border-b-[1px]"
+          className="flex flex-col items-start w-1/2 p-2 pl-4 mb-2 border-l-4  shadow-lg rounded-sm border-black"
         >
           <div className="flex gap-4 w-full">
             <Link href={`/profile/${post.userName}`}>
@@ -51,7 +51,7 @@ export default function Posts() {
                 {post.tags.map(tag => (
                   <span
                     key={tag}
-                    className="bg-blue-50 text-blue-500 px-2 py-1 text-sm rounded-2xl"
+                    className="bg-blue-50 border-[1px] border-transparent hover:border-blue-500 cursor-pointer text-blue-500 px-2 py-1 text-sm rounded-2xl"
                   >
                     {tag}
                   </span>

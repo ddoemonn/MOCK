@@ -42,12 +42,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={roboto.className}
     >
       <body className="bg-background text-foreground font-light">
-        <nav className="w-full text-md border-b flex py-4 px-8 fixed top-0 bg-white">
+        <nav className="w-full text-md  flex py-4 px-8 fixed top-0 bg-white">
           <Link
             href="/"
             className={`flex items-center gap-1 flex-1 text-3xl ${exo.className} `}
           >
-            MOCK.
+            <h1 className="inline-flex border-b-4 border-black">MOCK.</h1>
           </Link>
 
           {isSupabaseConnected && <AuthButton />}

@@ -24,8 +24,13 @@ export default async function AuthButton() {
   };
 
   return user ? (
-    <div className="flex items-center gap-4">
-      <Link href={`/profile/${user.user_metadata.user_name}`}>Profile</Link>
+    <div className="flex items-center gap-4 ">
+      <Link
+        href={`/profile/${user.user_metadata.user_name}`}
+        className="hover:underline decoration-4 text-lg underline-offset-4"
+      >
+        Profile
+      </Link>
 
       <form action={signOut}>
         <Button
