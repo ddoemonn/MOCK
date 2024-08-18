@@ -2,7 +2,7 @@ interface Post {
   id: number;
   content: string;
   userId: number;
-  createdAt: string;
+  created_at: string;
   avatarUrl: string;
   userName: string;
   name: string;

@@ -2,7 +2,7 @@
 
 import { createClient } from '@/utils/supabase/server';
 
-export async function createPost(formData: FormData, tags: string[]) {
+export async function createPost(formData: FormData, tags: string[]): Promise<Post[]> {
   const supabase = createClient();
 
   const {
@@ -31,7 +31,7 @@ export async function createPost(formData: FormData, tags: string[]) {
       tags,
     })
     .select()
-    .returns<Post>();
+    .returns<Post[]>();
 
   if (error) {
     throw new Error(error.message);
@@ -50,4 +50,6 @@ export async function createPost(formData: FormData, tags: string[]) {
         .eq('tag', tag);
     }
   }
+
+  return data;
 }

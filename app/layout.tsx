@@ -1,7 +1,8 @@
+import Link from 'next/link';
+
 import { Exo, Inter } from 'next/font/google';
 
 const roboto = Inter({
-  weight: '400',
   subsets: ['latin'],
 });
 
@@ -11,15 +12,8 @@ const exo = Exo({
 });
 
 import './globals.css';
-import Image from 'next/image';
-
-import { GiElderberry } from 'react-icons/gi';
-
-import berry from '@/app/berry.svg';
 import AuthButton from '@/components/AuthButton';
 import { createClient } from '@/utils/supabase/server';
-
-import Link from 'next/link';
 
 const defaultUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000';
 

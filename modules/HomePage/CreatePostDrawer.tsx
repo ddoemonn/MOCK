@@ -8,12 +8,14 @@ import { Button } from '@/components/ui/button';
 import { Drawer, DrawerClose, DrawerContent, DrawerHeader, DrawerTitle, DrawerTrigger } from '@/components/ui/drawer';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { usePostStore } from '@/store';
 
 import { createPost } from './actions';
 
 export default function CreatePostDrawer() {
   const [tagsList, setTagsList] = useState<string[]>([]);
   const [currentTag, setCurrentTag] = useState('');
+  const addPost = usePostStore(state => state.addPost);
   return (
     <Drawer>
       <DrawerTrigger asChild>
@@ -31,7 +33,12 @@ export default function CreatePostDrawer() {
           </DrawerHeader>
 
           <form
-            action={e => createPost(e, tagsList)}
+            action={async e => {
+              const newPost = await createPost(e, tagsList);
+              if (newPost) {
+                addPost(newPost[0]);
+              }
+            }}
             className="px-4"
           >
             <Input

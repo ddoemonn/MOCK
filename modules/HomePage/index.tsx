@@ -5,6 +5,7 @@ import { createClient } from '@/utils/supabase/server';
 
 import CreatePostDrawer from './CreatePostDrawer';
 import Posts from './Posts';
+import Tags from './Tags';
 
 export default async function HomePage() {
   const supabase = createClient();
@@ -17,7 +18,8 @@ export default async function HomePage() {
 
   return (
     <>
-      <div className="flex flex-col items-center mt-20">
+      <Tags />
+      <div className="flex flex-col items-center mt-20  ">
         <Posts posts={posts} />
       </div>
       {user ? <CreatePostDrawer /> : <UnauthorizedDialog />}
