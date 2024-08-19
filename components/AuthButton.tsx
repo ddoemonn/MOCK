@@ -27,14 +27,14 @@ export default async function AuthButton() {
     <div className="flex items-center gap-4 ">
       <Link
         href={`/profile/${user.user_metadata.user_name}`}
-        className="hover:underline decoration-4 text-lg underline-offset-4"
+        className="hover:underline decoration-2 text-md underline-offset-[6px]"
       >
         Profile
       </Link>
 
       <form action={signOut}>
         <Button
-          variant="secondary"
+          variant="default"
           className="font-extrabold"
         >
           <TbLogout2 className="w-5 h-5 font-extrabold" />
@@ -45,7 +45,7 @@ export default async function AuthButton() {
     <Dialog>
       <DialogTrigger asChild>
         <Button
-          variant="secondary"
+          variant="default"
           className="font-extrabold"
         >
           <TbLogin2 className="w-5 h-5 font-extrabold" />

@@ -18,4 +18,4 @@ export const useToggleCommentStore = create<ToggleCommentStore>(set => ({
   setToggle: toggle => set({ toggle }),
 }));
 
-const toggleCommentStore = useToggleCommentStore.getState();
+export const toggleCommentStore = useToggleCommentStore.getState();
